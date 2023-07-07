@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 //Function to get coordinates of a city by name
 Future<City> getCords({String cityName = "ahmedabad"}) async{
   try{
-    final response = await http.get(Uri.parse('https://api.openweathermap.org/geo/1.0/direct?q=$cityName&limit=5&appid=26bc0ae99bd6ae7e14962b594e600af7'));
+    final response = await http.get(Uri.parse('https://api.openweathermap.org/geo/1.0/direct?q=$cityName&limit=5&appid='));
     final List<dynamic> fData = jsonDecode(response.body);
     final Map<String, dynamic> data = fData.first;
     return City(name: data['name'], lat: data['lat'], lon: data['lon']);
@@ -21,7 +21,7 @@ Future<City> getCords({String cityName = "ahmedabad"}) async{
 //Function to get weather data of a city by given lat and lon coordinates
 Future<CityWeatherData> getWeatherData({required double lat, required double lon}) async{
   try{
-    final response = await http.get(Uri.parse('https://api.openweathermap.org/data/2.5/weather?units=metric&lat=$lat&lon=$lon&appid=26bc0ae99bd6ae7e14962b594e600af7'));
+    final response = await http.get(Uri.parse('https://api.openweathermap.org/data/2.5/weather?units=metric&lat=$lat&lon=$lon&appid='));
     final Map<String, dynamic> data = jsonDecode(response.body);
     return CityWeatherData(
         temp: data['main']['temp'],
